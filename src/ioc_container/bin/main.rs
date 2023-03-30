@@ -1,4 +1,4 @@
-use std::fs;
+use std::{fs, rc::Rc};
 
 struct MemoryRepo {
     num: i32,
@@ -24,17 +24,24 @@ trait Repository {
 
 struct UseCase;
 impl UseCase {
-    fn run(mut repo: Box<dyn Repository>)
+    fn run(repo: &mut Rc<dyn Repository>)
     where
         Self: Sized,
     {
-        repo.save(32);
+        if let Some(repo) = Rc::get_mut(repo) {
+            repo.save(32);
+        }
     }
 }
 
+struct Container {
+    number_repository: Rc<dyn Repository>,
+}
+
 fn main() {
-    let mut memory_repo = MemoryRepo { num: 0 };
-    UseCase::run(Box::new(memory_repo));
-    let file_repo = FileRepo;
-    UseCase::run(Box::new(file_repo));
+    let mut container = Container {
+        number_repository: Rc::new(FileRepo),
+    };
+    UseCase::run(&mut container.number_repository);
+    UseCase::run(&mut container.number_repository);
 }
