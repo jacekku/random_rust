@@ -1,0 +1,20 @@
+[package]
+name = "_random_rust_projects"
+version = "0.1.0"
+edition = "2021"
+
+[[bin]]
+name = "diagram_decoder"
+path = "src/diagram_decoder/bin/main.rs"
+
+[[bin]]
+name = "testing_loops"
+path = "src/testing_loops/bin/main.rs"
+
+[[bin]]
+name = "ioc_container"
+path = "src/ioc_container/bin/main.rs"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
