@@ -15,6 +15,15 @@ path = "src/testing_loops/bin/main.rs"
 name = "ioc_container"
 path = "src/ioc_container/bin/main.rs"
 
+[[bin]]
+name = "diagram_generator"
+path = "src/diagram_generator/bin/main.rs"
+
+[[bin]]
+name = "interpreter"
+path = "src/interpreter/bin/main.rs"
+
+
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
